@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
+
+import songRoute from './router/song.router';
 
 dotenv.config();
 
@@ -7,11 +9,15 @@ const app: Express = express();
 const port = process.env['PORT'];
 const BASE_URL = process.env['BASE_URL'];
 
-app.get('/', (req: Request, res: Response) => {
-  console.log(req.query);
-  res.send('Express + TypeScript Server');
-});
+app.use(express.json());
+app.use('/song', songRoute);
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at ${BASE_URL}:${port}`);
-});
+const server = app
+  .listen(port, () => {
+    console.log(`Server is running on ${BASE_URL}:${port}`);
+  })
+  .on('error', (err: Error) => {
+    console.log(err);
+  });
+
+export default server;
