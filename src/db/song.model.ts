@@ -11,4 +11,14 @@ const songSchema: Schema = new Schema<SongModel>({
 
 type SongModel = InferSchemaType<typeof songSchema>;
 
-export const SongRepository: Model<SongModel> = mongoose.model<SongModel>('Song', songSchema);
+export interface ModelFactory<T> {
+  create(): Model<T>;
+}
+
+export class SongModelFactory implements ModelFactory<SongModel> {
+  constructor(private readonly modelName: string = 'Song') {}
+
+  create(): Model<SongModel> {
+    return mongoose.model<SongModel>(this.modelName, songSchema);
+  }
+}

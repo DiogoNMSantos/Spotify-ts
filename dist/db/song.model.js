@@ -34,9 +34,12 @@ const songSchema = new mongoose_1.Schema({
     artist: { type: String, required: true },
 });
 class SongModelFactory {
+    constructor(modelName = 'Song') {
+        this.modelName = modelName;
+    }
     create() {
-        return mongoose_1.default.model('Song', songSchema);
+        return mongoose_1.default.model(this.modelName, songSchema);
     }
 }
 exports.SongModelFactory = SongModelFactory;
-//# sourceMappingURL=song.repository.js.map
+//# sourceMappingURL=song.model.js.map

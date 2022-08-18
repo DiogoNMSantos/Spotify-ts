@@ -10,16 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const song_repository_1 = require("../db/song.repository");
-const songRoute = () => {
+const songRoute = (modelFactory) => {
     const router = (0, express_1.Router)();
     router.get('/', (_, res) => __awaiter(void 0, void 0, void 0, function* () {
-        const songs = yield song_repository_1.SongRepository.find().exec();
+        const songs = yield modelFactory.create().find().exec();
         return res.status(200).json({ data: songs });
     }));
     router.get('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { id } = req.params;
-        const songs = yield song_repository_1.SongRepository.findById(id).exec();
+        const songs = yield modelFactory.create().findById(id).exec();
         return res.status(200).json({ data: songs });
     }));
     return router;
