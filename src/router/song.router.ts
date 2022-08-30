@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
-import { SongModelFactory, Song } from '../db/models/song.model';
+
+import { Song, SongModelFactory } from '../db/models/song.model';
 
 const songRoute = (modelFactory: SongModelFactory) => {
   const router = Router();
