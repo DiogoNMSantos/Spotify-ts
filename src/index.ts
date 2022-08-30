@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express, { Express } from 'express';
-import { connectDB } from './db/index';
 
+import { connectDB } from './db/index';
 import { SongModelFactory } from './db/song.model';
 import songRoute from './router/song.router';
 
