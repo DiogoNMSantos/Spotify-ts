@@ -22,3 +22,5 @@ export class SongModelFactory implements ModelFactory<SongModel> {
     return mongoose.model<SongModel>(this.modelName, songSchema);
   }
 }
+
+export const Song = mongoose.model<SongModel>('Song', songSchema);
