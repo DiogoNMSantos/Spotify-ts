@@ -25,11 +25,10 @@ const songRoute = (modelFactory: SongModelFactory) => {
       title: body.title,
       duration: body.duration,
       genre: body.genre,
-      releaseDate: body.releaseDate,
+      release: body.release,
       soundUrl: body.soundUrl,
       photo: body.photo,
       artist: body.artist,
-      //album: body.album
     };
 
     const newSong = new Song(data);
@@ -41,7 +40,7 @@ const songRoute = (modelFactory: SongModelFactory) => {
       select: 'name',
     }); /*.populate({path:'album',select:'name'})*/
 
-    res.json(song);
+    res.status(201).json(song);
   });
 
   return router;

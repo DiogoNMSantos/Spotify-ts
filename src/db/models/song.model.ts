@@ -4,7 +4,7 @@ const songSchema: Schema = new Schema<SongModel>({
   title: { type: String, required: true },
   duration: { type: Number, required: true },
   genre: { type: String, required: true },
-  release: { type: Date, required: true },
+  release: { type: String, required: true },
   photo: { type: String, required: true },
   artist: { type: String, required: true },
 });
